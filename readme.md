@@ -4,7 +4,9 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/lowerbarriers/finished-starter)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-[![finshed-starter](assets/images/required/readme-screenshot.jpg)](https://github.com/lowerbarriers/finished-starter)
+[THIS one click and you'll have a website](https://github.com/lowerbarriers/finished-starter/fork)
+
+[![finshed-starter](assets/images/required/readme-screenshot.jpg)](https://lowerbarriers.org/finished-starter)
 
 This is great code to copy if you want a full-fledged site **completely free** out of the box on day one,
 that you can customize and extend to suit your needs.
@@ -30,6 +32,43 @@ makes your site special.
   * **Performance** — Tons of optimizations to eke out extra milliseconds of speed
   * **Documentation** — A site with a design system and more docs than you'll believe
 
+## Just one example of why this code rocks
+
+Let's say you want to embed a tweet on a page. On any site you can paste the embed code:
+
+```html
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Do you have feedback on how to make the finished-starter github page more appealing? 
+  </p>
+  &mdash; Brad Czerniak solves it once! (@ao5357) 
+  <a href="https://twitter.com/ao5357/status/1336690590893953029?ref_src=twsrc%5Etfw">December 9, 2020</a>
+</blockquote> 
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+As far as embed codes go, Twitter's isn't bad. But on a finished-starter site if you use the liquid component 
+built into the system (and pass it some props):
+
+```
+{% include molecules/tweet.html
+  classes=""
+  children="Do you have feedback on how to make the finished-starter github page more appealing? "
+  date="December 9, 2020"
+  url="https://twitter.com/ao5357/status/1336690590893953029"
+%}
+```
+
+...you can manage from the [all-in-one component definition](https://github.com/lowerbarriers/finished-starter/blob/gh-pages/_includes/molecules/tweet.html) 
+things like the "Do not track" attribute and color theme site-wide for consistency and to protect your users.
+
+The [site's component script](https://github.com/lowerbarriers/finished-starter/blob/gh-pages/assets/js/partials/twitter-tweet.js) 
+will only load the twitter third-party JavaScript if there's tweets on the page (which is important for privacy and performance), and 
+will automatically load embeds if new ones are added to an already-loaded page.
+
+If you ever need to look up how to embed a tweet, [your own site's documentation has a whole section about it](https://lowerbarriers.org/finished-starter/docs/design/molecules/). 
+And that's far from the only documentation you get on day one!
+
 ## Installation
 
   1. Fork the repository (button at top of repo page)
@@ -43,6 +82,14 @@ If you want to use netlify,
 
 If you prefer Vercel,
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/lowerbarriers/finished-starter)
+
+Presently **Cloudflare Pages** doesn't have a one-click deploy button (to our knowledge), but 
+[the Cloudflare Pages demo here](https://finished-starter.pages.dev/) demonstrates that it's quite possible to do:
+
+  1. Fork the repo
+  2. Sign in to Cloudflare and select Pages from the bottom sidebar
+  3. Connect your GitHub account and add your fork
+  4. Set the production branch to `gh-pages`, "Build command" to `jekyll build --config _config.yml,_config.localdev.yml`, and "Build output directory" to `_site`
 
 ### Creating a local version for development
 
